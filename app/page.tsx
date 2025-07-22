@@ -1,7 +1,12 @@
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      hi
-    </div>
+    <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+    <section className="main-section">
+      <div className="page-heading">
+        <h1>Track Your Applications & Resume Ratings</h1>
+        <h2>Review your resume and track your applications and Ai powered feedback</h2>
+      </div>
+    </section>
+    </main>
   );
 }
