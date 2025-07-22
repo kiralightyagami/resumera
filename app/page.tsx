@@ -1,8 +1,21 @@
+"use client"
 import { Navbar } from "./components/navbar";
 import { ResumeCard } from "./components/ResumeCard";
-import { resumes } from "./constants/resumes";
+import { resumes } from "../constants/resumes";
+import { usePuterStore } from "./lib/puter";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const {auth} = usePuterStore();
+  const router = useRouter();
+  
+  useEffect(() => {
+    if(!auth.isAuthenticated) {
+      router.push("/auth");
+    }
+  }, [auth.isAuthenticated, router]);
+
   return (
       <main className="bg-[url('/images/bg-main.svg')] bg-cover">
       <Navbar />

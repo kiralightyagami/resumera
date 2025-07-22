@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import PuterInit from "./components/PuterInit";
 
 
 const geistSans = Geist({
@@ -28,6 +29,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <PuterInit />
+        <script src="https://js.puter.com/v2/"></script>
         {children}
       </body>
     </html>
