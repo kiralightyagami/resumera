@@ -69,7 +69,7 @@ const handleAnalyze = async ({companyName, jobTitle, jobDescription, file}: {com
     await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
     setStatusText("Analyzing complete...");
-    router.push(`/feedback/${uuid}`);
+    router.push(`/resume/${uuid}`);
 }
 
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
