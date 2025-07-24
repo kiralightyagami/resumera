@@ -1,31 +1,49 @@
 "use client"
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ScoreCircle from './ScoreCircle'
-import Image from 'next/image'
+import { usePuterStore } from '../lib/puter'
 
 export const ResumeCard = ({resume: {id, companyName, jobTitle, feedback, imagePath}}: {resume: Resume}) => {
-  return (
+    const {fs} = usePuterStore();
+    const [resumeUrl, setResumeUrl] = useState("");
+    
+    useEffect(() => {
+        const loadResumes = async () => {
+          const blob = await fs.read(imagePath);
+    
+          if(!blob) return;
+          let url = URL.createObjectURL(blob);
+          setResumeUrl(url);
+        }
+    
+        loadResumes();
+      }, [imagePath]);
+ 
+    return (
     <Link href={`/resume/${id}`} className='resume-card animate-in fade-in duration-1000'>
         <div className='resume-card-header'>
         <div className='flex flex-col gap-2'>
-            <h2 className='!text-black font-bold break-words'>
+            { companyName && <h2 className='!text-black font-bold break-words'>
                 {companyName}
-            </h2>
-            <h3 className='text-lg break-words text-gray-500'>
+            </h2> }
+            { jobTitle && <h3 className='text-lg break-words text-gray-500'>
                 {jobTitle}
-            </h3>
+            </h3> }
+            { !companyName && !jobTitle && <h2 className='!text-black font-bold break-words'>
+                Resume
+            </h2> }
         </div>
         <div className='flex-shrink-0'>
             <ScoreCircle score={feedback.overallScore} />
         </div>
         </div>
-        <div className='gradient-border animate-in fade-in duration-1000'>
+        { resumeUrl && ( <div className='gradient-border animate-in fade-in duration-1000'>
             <div className='w-full h-full'>
-            <img src={imagePath} alt="resume" className="w-full h-[350px] max-sm:h-[200px] object-cover object-top"
+            <img src={resumeUrl} alt="resume" className="w-full h-[350px] max-sm:h-[200px] object-cover object-top"
             />
             </div>
-        </div>
+        </div> )}
     </Link>
   )
 }
