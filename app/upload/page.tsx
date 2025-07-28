@@ -31,6 +31,7 @@ const handleAnalyze = async ({companyName, jobTitle, jobDescription, file}: {com
 
     setStatusText("Generating feedback...");
     const imageFile = await convertPdfToImage(file);
+    console.log(imageFile);
     if(!imageFile.file) return setStatusText("Failed to convert resume to image");
 
     setStatusText("Uploading resume to AI...");
