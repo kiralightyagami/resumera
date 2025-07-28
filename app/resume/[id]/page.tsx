@@ -43,10 +43,10 @@ const Resume = () => {
       const imageUrl = URL.createObjectURL(imageBlob);
       setImageUrl(imageUrl);
 
-      // Parse the feedback JSON string into an object
+      
       const parsedFeedback = typeof data.feedback === 'string' ? JSON.parse(data.feedback) : data.feedback;
       setFeedback(parsedFeedback);
-      console.log({resumeUrl, imageUrl, feedback: parsedFeedback });
+   
     }
 
     loadResume();
