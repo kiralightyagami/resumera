@@ -36,7 +36,7 @@ export default function Home() {
   }, []);
 
   return (
-      <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+      <main className="bg-[url('/images/bg-main.svg')] bg-cover min-h-screen">
       <Navbar />
     <section className="main-section">
       <div className="page-heading py-16">

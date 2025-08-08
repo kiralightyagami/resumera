@@ -21,7 +21,7 @@ export const ResumeCard = ({resume: {id, companyName, jobTitle, feedback, imageP
       }, [imagePath]);
  
     return (
-    <Link href={`/resume/${id}`} className='resume-card animate-in fade-in duration-1000'>
+    <Link href={`/resume/${id}`} className='resume-card animate-in fade-in duration-1000 cursor-pointer'>
         <div className='resume-card-header'>
         <div className='flex flex-col gap-2'>
             { companyName && <h2 className='!text-black font-bold break-words'>
@@ -38,9 +38,9 @@ export const ResumeCard = ({resume: {id, companyName, jobTitle, feedback, imageP
             <ScoreCircle score={feedback.overallScore} />
         </div>
         </div>
-        { resumeUrl && ( <div className='gradient-border animate-in fade-in duration-1000'>
-            <div className='w-full h-full'>
-            <img src={resumeUrl} alt="resume" className="w-full h-[350px] max-sm:h-[200px] object-cover object-top"
+        { resumeUrl && ( <div className='gradient-border animate-in fade-in duration-1000 shadow-input'>
+            <div className='w-full h-full shadow-input rounded-2xl'>
+            <img src={resumeUrl} alt="resume" className="w-full h-[350px] max-sm:h-[200px] object-cover object-top rounded-2xl"
             />
             </div>
         </div> )}

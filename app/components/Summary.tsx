@@ -20,7 +20,7 @@ const textColor = score > 70 ? 'text-green-600' : score > 49 ? 'text-yellow-600'
 
 export const Summary = ({feedback}: {feedback: Feedback}) => {
   return (
-    <div className='bg-white rounded-2xl shadow-md w-full'>
+    <div className='bg-white text-black rounded-2xl shadow-md w-full'>
       <div className='flex flex-row items-center p-4 gap-8'>
         <ScoreGauge score={feedback.overallScore}/>
         <div className='flex flex-col gap-2'>
